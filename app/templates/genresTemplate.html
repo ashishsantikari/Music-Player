@@ -1,0 +1,58 @@
+<div class="col-xs-12">
+	<div class="col-xs-12 text-center page-header"><h2 class="h2 text-uppercase">Genres</h2></div> 
+	<div class="col-xs-offset-2 col-xs-8">
+		<div class="spacer20"></div>
+		<div class="row">
+			<div class="row">
+				<div class="col-xs-4">
+					<span class="h4 text-danger"><strong>Genre Name</strong></span>
+				</div>
+				<div class="col-xs-4 text-center">
+					<span class="h4 text-danger"><strong>Click To Edit</strong></span>
+				</div>
+			</div>
+			<div class="row spacer20"></div>
+			<div class="row" ng-repeat="genre in filteredGenres | orderBy: genre.name">
+				<div class="col-xs-4">
+					<span class="h5 text-capitalize text-primary">{{genre.name}}</span>
+				</div>
+				<div class="col-xs-4 text-center">
+					<span class="glyphicon glyphicon-edit" name="id" ng-model="genre.id" ng-hide="addClicked" ng-click="editGenre(genre.id)"></span>
+				</div>						
+			</div>
+			<div class="row spacer20"></div>
+			<div class="row">
+				<div class="col-xs-12 text-center">
+					<uib-pagination boundary-links="true" total-items="totalItems"  items-per-page="itemsPerPage" max-size="maxSize" ng-model="currentPage" ng-change="pageChanged()" previous-text="Previous" page-label="pageLabel($page)" next-text="Next" first-text="First" last-text="Last"></uib-pagination>
+				</div>			
+			</div>
+			<div class="row spacer20"></div>
+			<div class="row" ng-show="addClicked">						
+				<div class="col-xs-4">
+					<input type="text" name="name" class="form-control" ng-model="genre.name" placeholder="Enter Genre Name">
+					<br/>							
+				</div>	
+				<div class="col-xs-4">
+					<button class="btn btn-primary" role="button" ng-click="addNewGenre()">Save</button>	
+					<button class="btn btn-default" role="button" ng-click="addClicked=false">Cancel</button>			
+				</div>
+			</div>	
+			<div class="row" ng-show="editClicked">						
+				<div class="col-xs-4">
+					<input type="text" name="name" class="form-control" ng-model="genre.name" placeholder="Enter New Genre Name">
+					<br/>							
+				</div>	
+				<div class="col-xs-4">
+					<button class="btn btn-primary" role="button" ng-click="edit(editId)">Update Genre</button>	
+					<button class="btn btn-default" role="button" ng-click="editClicked=false">Cancel</button>			
+				</div>
+			</div>
+			<div class="row spacer20"></div>
+			<div class="row" ng-hide="addClicked || editClicked">
+				<div class="col-xs-12">
+					<button class="btn btn-default" role="button" ng-click="addClicked=true">Add New Genre</button>			
+				</div>
+			</div>				
+		</div>
+	</div>
+</div>

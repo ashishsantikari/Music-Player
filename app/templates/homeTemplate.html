@@ -1,0 +1,50 @@
+<div class="col-xs-12">	
+	<div class="col-xs-12 text-center page-header"><h2 class="h2 text-uppercase">Music Tracks</h2></div> 	
+
+	<div class="col-xs-offset-2 col-xs-8">
+		<div class="spacer20"></div>
+		<div class="row">
+			<form class="form-inline">
+					<label for="search" class="h4">Search By Track Name : </label>
+					<input type="text" class="form-control input-sm" name="search" ng-model="query">			
+			</form>
+			<div class="row">
+				<div class="col-xs-5">
+					<span class="h4 text-danger"><strong>Track Name</strong></span>
+				</div>
+				<div class="col-xs-4">
+					<span class="h4  text-danger"><strong>Genre</strong></span>
+				</div>
+				<div class="col-xs-3">
+					<span class="h4  text-danger"><strong>Rating</strong></span>
+				</div>
+			</div>
+			<div class="row spacer20"></div>
+			<div class="row" ng-repeat = "song in filteredTracks | filter : query" ng-dblclick="editSong(song.id)">
+				<div class="col-xs-5">
+					<span class="h5 text-capitalize text-primary">{{song.title}}</span>
+				</div>
+				<div class="col-xs-4">
+					<span class="h5 text-capitalize text-primary">{{song.genres}}</span>
+				</div>
+				<div class=" col-xs-3">
+					<uib-rating ng-model="song.rating" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['1','2','3', '4' , '5']" aria-labelledby="default-rating"></uib-rating>
+				</div>
+			</div>				
+			<div class="row spacer20"></div>			
+			<div class="row">
+				<div class="col-xs-12 text-center">
+					<uib-pagination boundary-links="true" total-items="totalItems"  items-per-page="itemsPerPage" max-size="maxSize" ng-model="currentPage" ng-change="pageChanged()" previous-text="Previous" page-label="pageLabel($page)" next-text="Next" first-text="First" last-text="Last"></uib-pagination>
+				</div>			
+			</div>
+			<div class="row">
+				<div class="col-xs-6">
+					<a class="btn btn-default" href="#addtrack" role="button">Add New Track</a>
+				</div>
+				<div class="col-xs-5	 text-right">
+					<a class="btn btn-default" href="#genres" role="button">View Genres</a>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>

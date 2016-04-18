@@ -1,0 +1,15 @@
+{
+  "name": "angular_js_project",
+  "version": "1.0.0",
+  "description": "Application code for the mentioned problem statement",
+  "main": "index.html",
+  "scripts": {
+    "prestart" : "npm install && bower install",
+	"start" : "http-server"
+  },
+  "author": "Ashish Santikari",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^0.9.0"
+  }
+}

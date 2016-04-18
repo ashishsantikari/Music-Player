@@ -1,0 +1,52 @@
+<div class="col-xs-12">
+	<div class="col-xs-12 text-center page-header"><h2 class="h2 text-uppercase">Add New Track</h2></div> 	
+	<div class="col-xs-offset-2 col-xs-8">
+		<div class="spacer20"></div>
+		<div class="row">
+			<form class="form" name="trackForm" novalidate>
+				<div class="col-xs-7 form-group">
+					<!-- <md-input-container>
+        				<label>Track Name</label>
+        				<input name="title" ng-model="formData.title">
+      				</md-input-container> -->
+					<label for="title" class="h4">Track Name</span>
+					<input type="text" name="title" class="form-control" ng-model="formData.title" required>
+					<span ng-show="trackForm.title.$touched && trackForm.title.$invalid">The Title of the track is required.</span>
+				</div>
+				<div class="col-xs-7 form-group">
+					<h2 class="md-title">Genre</h2>			
+					<md-chips ng-model="selectedGenres" md-autocomplete-snap md-require-match="true" ng-cloak>
+						<md-autocomplete md-search-text="searchText"
+							md-items="item in queryGroups(searchText)"
+							md-item-text="item"
+							md-autoselect="true"
+							md-select-on-match="false"
+							md-no-cache="true"
+							md-require-match="true"
+							placeholder="Find a genre..">
+							<span md-highlight-text="searchText">{{item}}</span>
+						</md-autocomplete>
+						<md-chip-template>
+							<span>{{$chip}}</span>
+						</md-chip-template>
+					</md-chips>
+					<div class="spacer20"></div>
+						<!-- <a class="btn btn-default" role="button" href="#genres">Add New Genre</a> -->
+						<button ng-show="genreList.name" class="btn btn-default" role="button" ng-click="editGenre(genreList.id)">Edit Genre</button>
+				</div>
+				<div class="col-xs-7 form-group">
+					<span class="h5">Rating</span>
+					<uib-rating ng-model="formData.rating" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three', 'four' , 'five']" aria-labelledby="default-rating"></uib-rating>
+				</div>
+				<div class="col-xs-6 form-group" ng-hide="update">
+					<button class="btn btn-primary" ng-click="createTrack()">Add Track</button>
+					<button class="btn btn-default" ng-click="reset()">Reset</button>
+				</div>
+				<div class="col-xs-6 form-group" ng-show="update">
+					<button class="btn btn-primary" ng-click="updateTrack()">Update Track</button>
+					<button class="btn btn-default" ng-click="reset()">Reset</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
