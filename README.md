@@ -1,0 +1,2 @@
+# GreedyGamesProject
+Application for GreedyGames
